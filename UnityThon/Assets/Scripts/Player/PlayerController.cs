@@ -7,20 +7,26 @@ public class PlayerController : MonoBehaviour
     float x, z;
     public float speed = 0.05f;//通常時の歩くスピード
     public float runningSpeed = 0.13f;//走っているときのスピード
+    public float junpForce = 100f;//ジャンプ力
 
 
     public GameObject cam;//プレイヤー視点
     Quaternion cameraRot, characterRot;
 
-    float Xsensityvity = 3f, Ysensityvity = 3f;
+    public float Xsensityvity = 3f, Ysensityvity = 3f;//マウス感度
     bool cursorLock = true;
 
     //変数の宣言(角度の制限用)
     float minX = -90f, maxX = 90f;
 
+    private bool isGround = false; //着地判定
+    private bool jumpFlag = false;//地面接してる時スペース押したらtrue
+    private Rigidbody rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
+        rigidbody = GetComponent<Rigidbody>();
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
     }
@@ -39,7 +45,13 @@ public class PlayerController : MonoBehaviour
 
         cam.transform.localRotation = cameraRot;
         transform.localRotation = characterRot;
-
+        if(isGround){
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                jumpFlag = true;
+                isGround = false;
+            }
+        }
 
         UpdateCursorLock();
     }
@@ -60,6 +72,10 @@ public class PlayerController : MonoBehaviour
         //transform.position += new Vector3(x,0,z);
 
         transform.position += cam.transform.forward * z + cam.transform.right * x;
+        if(jumpFlag){
+            rigidbody.AddForce(0, junpForce, 0);
+            jumpFlag = false;
+        }
     }
 
 
@@ -102,5 +118,12 @@ public class PlayerController : MonoBehaviour
         q.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
 
         return q;
+    }
+    void OnCollisionEnter(Collision other) //地面に触れた時の処理
+    {
+        if (other.gameObject.tag == "Ground") //Groundタグのオブジェクトに触れたとき
+        {
+            isGround = true; //isGroundをtrueにする
+        }
     }
 }
