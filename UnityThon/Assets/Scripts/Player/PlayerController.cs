@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     public float Xsensityvity = 3f, Ysensityvity = 3f;//マウス感度
     bool cursorLock = true;
+
+    //Event
+    public UnityEvent OnGameOver;
 
     //変数の宣言(角度の制限用)
     float minX = -90f, maxX = 90f;
@@ -124,6 +128,10 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Ground") //Groundタグのオブジェクトに触れたとき
         {
             isGround = true; //isGroundをtrueにする
+        }
+        if(other.gameObject.tag == "Enemy")
+        {
+            OnGameOver?.Invoke();
         }
     }
 }
