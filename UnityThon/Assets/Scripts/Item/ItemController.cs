@@ -7,6 +7,8 @@ public class ItemController : MonoBehaviour, ISelectable, IGrabbable
 {
     private Material[] _materials;
     public Material outlineMaterial;
+    [SerializeField]
+    Obtainable obt;
     private bool isOutlineEnabled = false;
     private bool isSelected = false;
     // Start is called before the first frame update
@@ -36,13 +38,18 @@ public class ItemController : MonoBehaviour, ISelectable, IGrabbable
         if(!isOutlineEnabled){
             addOutlineMatrial();
         }
+        ItemInfoText.GetInstance().SetText(obt.GetItemName(), 0);
+        if(ItemManager.GetInstance().HasItem(obt.GetItemName()))
+        {
+            ItemInfoText.GetInstance().SetText(ItemManager.GetInstance().GetItem(obt.GetItemName()).GetInformation(), 1);
+        }
     }
 
     public void Grabble()
     {
-        Destroy(this.gameObject);
+        obt.Obtain(gameObject);
     }
-    
+
     private void addOutlineMatrial()
     {
         _materials[_materials.Length - 1] = outlineMaterial;
