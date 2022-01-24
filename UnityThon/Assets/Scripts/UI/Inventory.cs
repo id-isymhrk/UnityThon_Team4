@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         return instance;
     }
 
-    public int GetItemsNum()
+    public int GetHasItemNum()
     {
         return inventory.Count;
     }
