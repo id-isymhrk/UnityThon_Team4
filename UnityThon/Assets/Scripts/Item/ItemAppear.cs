@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ItemAppear : MonoBehaviour
 {
-    private const int MaxItems = 3;
+    static ItemAppear instance;
+    const int MaxItems = 3;
 
     [SerializeField] int difficullty = 0;
     [SerializeField] int getNum = 0;
@@ -14,6 +15,20 @@ public class ItemAppear : MonoBehaviour
 
     private bool[] itemFlag = new bool[MaxItems] { false, false, false };
     private GameObject[] gameItems = new GameObject[3];
+
+    public static ItemAppear GetInstance()
+    {
+        return instance;
+    }
+    public int GetMaxItems()
+    {
+        return MaxItems;
+    }
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
