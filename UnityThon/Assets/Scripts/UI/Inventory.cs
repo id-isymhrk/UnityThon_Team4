@@ -13,6 +13,12 @@ public class Inventory : MonoBehaviour
     {
         return instance;
     }
+
+    public int GetItemsNum()
+    {
+        return inventory.Count;
+    }
+
     public List<Obtainable> SearchInventoryName(string name)
     {
         List<Obtainable> result = new List<Obtainable>();
