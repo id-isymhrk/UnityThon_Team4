@@ -6,6 +6,7 @@ public class ItemAppear : MonoBehaviour
 {
     static ItemAppear instance;
     const int MaxItems = 3;
+    static int necessaryNum = MaxItems;
 
     [SerializeField] int difficullty = 0;
     [SerializeField] int getNum = 0;
@@ -20,9 +21,9 @@ public class ItemAppear : MonoBehaviour
     {
         return instance;
     }
-    public int GetMaxItems()
+    public int GetItemsNum()
     {
-        return MaxItems;
+        return necessaryNum;
     }
 
     private void Awake()
@@ -36,6 +37,7 @@ public class ItemAppear : MonoBehaviour
         switch (difficullty)
         {
             case 0:
+                necessaryNum = 1;
                 gameItems[0] = (GameObject)Instantiate(item[0], point[0].transform.position, point[0].transform.rotation);
                 break;
             case 1:
@@ -61,7 +63,10 @@ public class ItemAppear : MonoBehaviour
             //checkDestroy
             if (gameItems[getNum] == null)
             {
-                getNum++;
+                if (getNum < necessaryNum - 1)
+                {
+                    getNum++;
+                }
             }
             //checkInstantiate
             if (!itemFlag[getNum])
