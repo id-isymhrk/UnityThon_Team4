@@ -135,5 +135,12 @@ public class PlayerController : MonoBehaviour
             //OnGameOver?.Invoke();
             SceneManager.LoadScene("GameOver");
         }
+        if(other.gameObject.tag == "Door")
+        {
+            if (Inventory.GetInstance().GetHasItemNum() == ItemAppear.GetInstance().GetItemsNum())
+            {
+                //ChangeScene
+            }
+        }
     }
 }
