@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
             if (Inventory.GetInstance().GetHasItemNum() == ItemAppear.GetInstance().GetItemsNum())
             {
                 //ChangeScene
+                SceneManager.LoadScene("Game Clare");
             }
         }
     }
