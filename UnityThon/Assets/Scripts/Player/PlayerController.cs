@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -131,7 +132,16 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.tag == "Enemy")
         {
-            OnGameOver?.Invoke();
+            //OnGameOver?.Invoke();
+            SceneManager.LoadScene("GameOver");
+        }
+        if(other.gameObject.tag == "Door")
+        {
+            if (Inventory.GetInstance().GetHasItemNum() == ItemAppear.GetInstance().GetItemsNum())
+            {
+                //ChangeScene
+                SceneManager.LoadScene("Game Clare");
+            }
         }
     }
 }

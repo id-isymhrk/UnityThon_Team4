@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ItemAppear : MonoBehaviour
 {
-    private const int MaxItems = 3;
+    static ItemAppear instance;
+    const int MaxItems = 3;
+    static int necessaryNum = MaxItems;
 
     [SerializeField] int difficullty = 0;
     [SerializeField] int getNum = 0;
@@ -15,12 +17,27 @@ public class ItemAppear : MonoBehaviour
     private bool[] itemFlag = new bool[MaxItems] { false, false, false };
     private GameObject[] gameItems = new GameObject[3];
 
+    public static ItemAppear GetInstance()
+    {
+        return instance;
+    }
+    public int GetItemsNum()
+    {
+        return necessaryNum;
+    }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         switch (difficullty)
         {
             case 0:
+                necessaryNum = 1;
                 gameItems[0] = (GameObject)Instantiate(item[0], point[0].transform.position, point[0].transform.rotation);
                 break;
             case 1:
@@ -46,7 +63,10 @@ public class ItemAppear : MonoBehaviour
             //checkDestroy
             if (gameItems[getNum] == null)
             {
-                getNum++;
+                if (getNum < necessaryNum - 1)
+                {
+                    getNum++;
+                }
             }
             //checkInstantiate
             if (!itemFlag[getNum])

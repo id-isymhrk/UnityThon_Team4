@@ -9208,7 +9208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782713936}
   m_Layer: 0
-  m_Name: PlaceForItem3(PC)
+  m_Name: PlaceForItem3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16152,7 +16152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1361935985}
   m_Layer: 0
-  m_Name: PlaceForItem1(key)
+  m_Name: PlaceForItem1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19801,7 +19801,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608603471}
   m_Layer: 0
-  m_Name: PlaceForItem4(mouse)
+  m_Name: PlaceForItem4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21495,7 +21495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1720099229}
   m_Layer: 0
-  m_Name: PlaceForItem2(text)
+  m_Name: PlaceForItem2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
