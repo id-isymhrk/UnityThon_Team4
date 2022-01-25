@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     {
     }
     public void Onclick(){//ボタンによるシーン遷移を管理します(タイトルからゲーム、リザルトからタイトルなど)
-        if(scene.Equals("Title Scenes"))SceneManager.LoadScene("Sample Scene");
-        else if(scene.Equals("Gameover")||scene.Equals("Game Clare"))SceneManager.LoadScene("Title Scenes");//clear時のシーン名を書く
+        if(scene.Equals("Title Scenes"))SceneManager.LoadScene("Scenes/SampleScene");
+        else if(scene.Equals("Gameover")||scene.Equals("GameClare"))SceneManager.LoadScene("Title Scenes/Title Scenes");
     }
     public void GameOver()
     {
