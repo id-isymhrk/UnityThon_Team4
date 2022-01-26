@@ -27,10 +27,14 @@ public class PlayerController : MonoBehaviour
     private bool isGround = false; //着地判定
     private bool jumpFlag = false;//地面接してる時スペース押したらtrue
     private Rigidbody rigidbody;
+    
+    public AudioClip moving;
+    private AudioSource _audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioSource=this.GetComponent<AudioSource>();
         rigidbody = GetComponent<Rigidbody>();
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
@@ -59,6 +63,10 @@ public class PlayerController : MonoBehaviour
         }
 
         UpdateCursorLock();
+
+        //移動中におけるse再生の管理
+        if(!rigidbody.IsSleeping()&&!_audioSource.isPlaying)_audioSource.PlayOneShot(moving);
+        else if(rigidbody.IsSleeping())_audioSource.Stop();
     }
 
     private void FixedUpdate()
