@@ -31,6 +31,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip moving;
     private AudioSource _audioSource;
 
+    [SerializeField]
+    GameObject rebornPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,9 +67,20 @@ public class PlayerController : MonoBehaviour
 
         UpdateCursorLock();
 
+
+        PlayerReborn();
+
         //移動中におけるse再生の管理
-        if(!rigidbody.IsSleeping()&&!_audioSource.isPlaying)_audioSource.PlayOneShot(moving);
+        if (!rigidbody.IsSleeping()&&!_audioSource.isPlaying)_audioSource.PlayOneShot(moving);
         else if(rigidbody.IsSleeping())_audioSource.Stop();
+    }
+
+    private void PlayerReborn()
+    {
+        if (this.transform.position.y < 0)
+        {
+            this.transform.position = rebornPoint.transform.position;
+        }
     }
 
     private void FixedUpdate()
