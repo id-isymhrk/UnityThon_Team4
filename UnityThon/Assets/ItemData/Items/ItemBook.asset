@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0a765c9c2f9d045b37de8750bade39, type: 3}
   m_Name: ItemBook
   m_EditorClassIdentifier: 
-  kindOfItem: 0
-  icon: {fileID: 21300000, guid: 6a18ae8e70df00a409002c3cb8dff556, type: 3}
+  kindOfItem: 1
+  icon: {fileID: 21300000, guid: 9e690cbd493566644b634deae9bc2bff, type: 3}
   itemName: ItemBook
   information: "\u53C2\u8003\u66F8"

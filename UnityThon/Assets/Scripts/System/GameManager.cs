@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 {
     private string scene;
     // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
         scene=gameObject.scene.name;
@@ -18,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
     }
     public void Onclick(){//ボタンによるシーン遷移を管理します(タイトルからゲーム、リザルトからタイトルなど)
-        if(scene.Equals("Title Scenes"))SceneManager.LoadScene("Scenes/SampleScene");
+        if(scene.Equals("Title Scenes"))SceneManager.LoadScene("Scenes/mainScene");
         else if(scene.Equals("Gameover")||scene.Equals("GameClare"))SceneManager.LoadScene("Title Scenes/Title Scenes");
     }
     public void GameOver()

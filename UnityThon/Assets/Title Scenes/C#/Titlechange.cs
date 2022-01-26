@@ -16,6 +16,6 @@ public class Titlechange : MonoBehaviour
         
     }
     public void NextScene(){
-        SceneManager.LoadScene("Sample Scene");
+        SceneManager.LoadScene("mainScene");
     }
 }

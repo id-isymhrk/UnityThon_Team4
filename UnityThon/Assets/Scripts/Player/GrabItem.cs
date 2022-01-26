@@ -41,7 +41,7 @@ public class GrabItem : MonoBehaviour
                     {
                         // クリックされた時の処理
                         g.Grabble();
-                        _audioSource.PlayOneShot(taking);
+                        //_audioSource.PlayOneShot(taking);
                     }
                 }
             }
