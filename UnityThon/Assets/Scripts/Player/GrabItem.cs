@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GrabItem : MonoBehaviour
 {
+    public AudioClip taking;
+    private AudioSource _audioSource;
     public GameObject cam;//プレイヤーのメインカメラ
     public float limitGrabDistance = 3f;//(掴む)選択する距離
     // private LineRenderer lineRenderer;
@@ -39,6 +41,7 @@ public class GrabItem : MonoBehaviour
                     {
                         // クリックされた時の処理
                         g.Grabble();
+                        _audioSource.PlayOneShot(taking);
                     }
                 }
             }
